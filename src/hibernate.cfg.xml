@@ -7,7 +7,7 @@
         <!-- 避免中文乱码useUnicode=true&characterEncoding=UTF-8 -->
         <property name="connection.url">jdbc:mysql://localhost:3306/csj</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
+        <property name="connection.username">csj</property>
         <property name="connection.password">123456</property>
 
         <!-- 注意dialect的值，否则会出现奇怪的问题 -->
@@ -19,6 +19,10 @@
 
         <mapping resource="com/csj/entity/Student.hbm.xml"/>
         <mapping class = "com.csj.entity.Person"/>
+        <mapping class = "com.csj.entity.Author"/>
+        <mapping class = "com.csj.entity.Article"/>
+        <mapping class = "com.csj.entity.Article1"/>
+        <mapping class = "com.csj.entity.ArticleContent1"/>
     </session-factory>
 </hibernate-configuration>
 

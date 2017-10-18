@@ -26,23 +26,23 @@ public class StudentTest{
     @Test
     public void add()
     {
-        Session session = null;
-        try {
+            Session session = null;
+            try{
             session = HibernateUtil.getSession();
             session.beginTransaction();
 
-            Student s = new Student(22, "HuaChenyu", "male", new Date());
+            Student s = new Student(21, "ZhongHanliang", "male", new Date());
             session.save(s);
             session.getTransaction().commit();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        }
-        finally {
-            HibernateUtil.closeSession(session);
-        }
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                session.getTransaction().rollback();
+            }
+            finally {
+                HibernateUtil.closeSession(session);
+            }
     }
 
     //删除
@@ -93,7 +93,7 @@ public class StudentTest{
         }
     }
 
-    //查询
+    //hql查询
     @Test
     public void query()
     {
@@ -103,11 +103,11 @@ public class StudentTest{
             session = HibernateUtil.getSession();
             session.beginTransaction();
 
-            String hql = "select count(e) from Student e where e.name = :student_id";
-            Query query = session.createQuery(hql).setParameter("student_id","csj");
-            Number n = (long)query.uniqueResult();
-            int i = n.intValue();
-            System.out.println(i);
+            String hql = "UPDATE Student e SET e.name = ? where e.id = ?";
+            String hql1 = "DELETE FROM Student WHERE id = ?";
+            Query query = session.createQuery(hql1);
+            query.setParameter(0, 22);
+            query.executeUpdate();
             //List<Student> list = query.list();
             ///Iterator iterator = list.iterator();
             //while(iterator.hasNext()) {

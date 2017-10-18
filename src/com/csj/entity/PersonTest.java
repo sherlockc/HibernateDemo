@@ -18,7 +18,7 @@ public class PersonTest {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Person person = new Person(1,"ZhangJie");
+        Person person = new Person(2,"ZhangJie2");
         session.save(person);
         session.getTransaction().commit();
     }
